@@ -256,35 +256,50 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
       }];
   context.maxImageCount = 1;
 
-  UIImagePickerController *imagePickerController = [self createImagePickerController];
-  imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-  imagePickerController.delegate = self;
-  imagePickerController.mediaTypes = @[
-    (NSString *)kUTTypeMovie, (NSString *)kUTTypeAVIMovie, (NSString *)kUTTypeVideo,
-    (NSString *)kUTTypeMPEG4
-  ];
-  imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
+  if (context.requestFullMetadata) {
+    UIImagePickerController *imagePickerController = [self createImagePickerController];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.delegate = self;
+    imagePickerController.mediaTypes = @[
+      (NSString *)kUTTypeMovie, (NSString *)kUTTypeAVIMovie, (NSString *)kUTTypeVideo,
+      (NSString *)kUTTypeMPEG4
+    ];
+    imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
 
-  if (maxDurationSeconds) {
-    NSTimeInterval max = [maxDurationSeconds doubleValue];
-    imagePickerController.videoMaximumDuration = max;
-  }
+    if (maxDurationSeconds) {
+      NSTimeInterval max = [maxDurationSeconds doubleValue];
+      imagePickerController.videoMaximumDuration = max;
+    }
 
-  self.callContext = context;
+    self.callContext = context;
 
-  switch (source.type) {
-    case FLTSourceTypeCamera:
-      [self checkCameraAuthorizationWithImagePicker:imagePickerController
-                                             camera:[self cameraDeviceForSource:source]];
-      break;
-    case FLTSourceTypeGallery:
-      [self checkPhotoAuthorizationWithImagePicker:imagePickerController];
-      break;
-    default:
-      [self sendCallResultWithError:[FlutterError errorWithCode:@"invalid_source"
-                                                        message:@"Invalid video source."
-                                                        details:nil]];
-      break;
+    switch (source.type) {
+      case FLTSourceTypeCamera:
+        [self checkCameraAuthorizationWithImagePicker:imagePickerController
+                                              camera:[self cameraDeviceForSource:source]];
+        break;
+      case FLTSourceTypeGallery:
+        [self checkPhotoAuthorizationWithImagePicker:imagePickerController];
+        break;
+      default:
+        [self sendCallResultWithError:[FlutterError errorWithCode:@"invalid_source"
+                                                          message:@"Invalid video source."
+                                                          details:nil]];
+        break;
+    }
+  } else {
+    PHPickerConfiguration *config =
+      [[PHPickerConfiguration alloc] initWithPhotoLibrary:PHPhotoLibrary.sharedPhotoLibrary];
+    config.selectionLimit = context.maxImageCount;
+    config.filter = [PHPickerFilter videosFilter];
+
+    _pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
+    _pickerViewController.delegate = self;
+    _pickerViewController.presentationController.delegate = self;
+
+    self.callContext = context;
+
+    [self showPhotoLibraryWithPHPicker:_pickerViewController];
   }
 }
 
