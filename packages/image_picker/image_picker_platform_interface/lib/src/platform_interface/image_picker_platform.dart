@@ -124,6 +124,7 @@ abstract class ImagePickerPlatform extends PlatformInterface {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) {
     throw UnimplementedError('pickVideo() has not been implemented.');
   }
@@ -251,6 +252,7 @@ abstract class ImagePickerPlatform extends PlatformInterface {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) {
     throw UnimplementedError('getVideo() has not been implemented.');
   }
@@ -374,6 +376,7 @@ abstract class CameraDelegatingImagePickerPlatform extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     if (source == ImageSource.camera) {
       final ImagePickerCameraDelegate? delegate = cameraDelegate;

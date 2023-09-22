@@ -122,11 +122,13 @@ class MethodChannelImagePicker extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final String? path = await _getVideoPath(
       source: source,
       maxDuration: maxDuration,
       preferredCameraDevice: preferredCameraDevice,
+      requestFullMetadata: requestFullMetadata,
     );
     return path != null ? PickedFile(path) : null;
   }
@@ -135,13 +137,15 @@ class MethodChannelImagePicker extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) {
     return _channel.invokeMethod<String>(
       'pickVideo',
       <String, dynamic>{
         'source': source.index,
         'maxDuration': maxDuration?.inSeconds,
-        'cameraDevice': preferredCameraDevice.index
+        'cameraDevice': preferredCameraDevice.index,
+        'requestFullMetadata': requestFullMetadata,
       },
     );
   }
@@ -281,11 +285,13 @@ class MethodChannelImagePicker extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final String? path = await _getVideoPath(
       source: source,
       maxDuration: maxDuration,
       preferredCameraDevice: preferredCameraDevice,
+      requestFullMetadata: requestFullMetadata,
     );
     return path != null ? XFile(path) : null;
   }

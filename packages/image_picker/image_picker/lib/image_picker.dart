@@ -280,11 +280,13 @@ class ImagePicker {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) {
     return platform.getVideo(
       source: source,
       preferredCameraDevice: preferredCameraDevice,
       maxDuration: maxDuration,
+      requestFullMetadata: requestFullMetadata,
     );
   }
 

@@ -223,11 +223,13 @@ class ImagePickerIOS extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final String? path = await _pickVideoAsPath(
       source: source,
       maxDuration: maxDuration,
       preferredCameraDevice: preferredCameraDevice,
+      requestFullMetadata: requestFullMetadata,
     );
     return path != null ? PickedFile(path) : null;
   }
@@ -236,12 +238,16 @@ class ImagePickerIOS extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = false,
   }) {
     return _hostApi.pickVideo(
-        SourceSpecification(
-            type: _convertSource(source),
-            camera: _convertCamera(preferredCameraDevice)),
-        maxDuration?.inSeconds);
+      SourceSpecification(
+        type: _convertSource(source),
+        camera: _convertCamera(preferredCameraDevice),
+      ),
+      maxDuration?.inSeconds,
+      requestFullMetadata,
+    );
   }
 
   @override
@@ -293,11 +299,13 @@ class ImagePickerIOS extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final String? path = await _pickVideoAsPath(
       source: source,
       maxDuration: maxDuration,
       preferredCameraDevice: preferredCameraDevice,
+      requestFullMetadata: requestFullMetadata,
     );
     return path != null ? XFile(path) : null;
   }

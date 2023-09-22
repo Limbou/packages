@@ -132,6 +132,7 @@ class ImagePickerAndroid extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final String? path = await _getVideoPath(
       source: source,
@@ -229,6 +230,7 @@ class ImagePickerAndroid extends ImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final String? path = await _getVideoPath(
       source: source,

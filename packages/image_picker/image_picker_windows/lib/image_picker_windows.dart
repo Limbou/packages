@@ -83,6 +83,7 @@ class ImagePickerWindows extends CameraDelegatingImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     final XFile? file = await getVideo(
         source: source,
@@ -149,6 +150,7 @@ class ImagePickerWindows extends CameraDelegatingImagePickerPlatform {
     required ImageSource source,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     Duration? maxDuration,
+    bool requestFullMetadata = true,
   }) async {
     switch (source) {
       case ImageSource.camera:

@@ -242,6 +242,7 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
 
 - (void)pickVideoWithSource:(nonnull FLTSourceSpecification *)source
                 maxDuration:(nullable NSNumber *)maxDurationSeconds
+                fullMetadata:(NSNumber *)fullMetadata
                  completion:
                      (nonnull void (^)(NSString *_Nullable, FlutterError *_Nullable))completion {
   FLTImagePickerMethodCallContext *context = [[FLTImagePickerMethodCallContext alloc]
