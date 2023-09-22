@@ -30,20 +30,40 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker_android:
-    path: ../image_picker_android
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_android
   image_picker_for_web:
-    path: ../image_picker_for_web
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_for_web
   image_picker_ios:
-    path: ../image_picker_ios
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_ios
   image_picker_linux:
-    path: ../image_picker_linux
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_linux
   image_picker_macos:
-    path: ../image_picker_macos
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_macos
   image_picker_platform_interface:
-    path: ../image_picker_platform_interface
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_platform_interface
   image_picker_windows:
-    path: ../image_picker_windows
-  
+    git:
+      url: https://github.com/dawidk-bc/packages.git
+      ref: refs/tags/v1.0.0
+      path: packages/image_picker/image_picker_windows
 
 dev_dependencies:
   build_runner: ^2.1.10
