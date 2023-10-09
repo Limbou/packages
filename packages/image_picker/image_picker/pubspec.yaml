@@ -4,7 +4,7 @@ description: Flutter plugin for selecting images from the Android and iOS image
 # repository: https://github.com/flutter/packages/tree/main/packages/image_picker/image_picker
 # issue_tracker: https://github.com/flutter/flutter/issues?q=is%3Aissue+is%3Aopen+label%3A%22p%3A+image_picker%22
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 1.0.4
+version: 1.0.5
 
 environment:
   sdk: ">=2.19.0 <4.0.0"
@@ -32,37 +32,37 @@ dependencies:
   image_picker_android:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_android
   image_picker_for_web:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_for_web
   image_picker_ios:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_ios
   image_picker_linux:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_linux
   image_picker_macos:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_macos
   image_picker_platform_interface:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_platform_interface
   image_picker_windows:
     git:
       url: https://github.com/dawidk-bc/packages.git
-      ref: refs/tags/v1.0.0
+      ref: refs/tags/v1.0.1
       path: packages/image_picker/image_picker_windows
 
 dev_dependencies:
