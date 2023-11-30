@@ -84,7 +84,7 @@ class UrlLauncherPlugin extends UrlLauncherPlatform {
         ((_isSafari && _isSafariTargetTopScheme(scheme)) ? '_top' : '');
 
     // ignore: unsafe_html
-    return _window.open(url, target, 'noopener,noreferrer');
+    return _window.open(url, target, 'noopener');
   }
 
   @override
